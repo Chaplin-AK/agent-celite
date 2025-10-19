@@ -22,6 +22,11 @@ const Navigation = () => {
     }
   };
 
+  const openEnquiryForm = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSffXgi7hLLNPB1lmrhiGBktEn-gLtbpbHbpKe2-rVbNsu3d2w/viewform?usp=dialog', '_blank', 'noopener,noreferrer');
+    setIsMobileMenuOpen(false);
+  };
+
   const navLinks = [
     { name: "Home", id: "hero" },
     { name: "Services", id: "services" },
@@ -41,7 +46,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <h1 className="text-2xl font-heading font-bold bg-gradient-primary bg-clip-text text-transparent">
-              EliteChaplin
+              CeliteAgent
             </h1>
           </div>
 
@@ -61,7 +66,7 @@ const Navigation = () => {
 
           <div className="hidden md:block">
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={openEnquiryForm}
               className="bg-gradient-primary text-primary-foreground font-semibold hover:shadow-glow transition-all duration-300"
             >
               Get a Quote
@@ -94,7 +99,7 @@ const Navigation = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={openEnquiryForm}
               className="w-full mt-4 bg-gradient-primary text-primary-foreground font-semibold"
             >
               Get a Quote

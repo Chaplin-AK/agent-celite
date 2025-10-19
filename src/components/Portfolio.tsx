@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Play } from "lucide-react";
+import { Play, X, ExternalLink } from "lucide-react";
 
 type ProjectCategory = "all" | "web" | "video";
 
@@ -12,63 +13,87 @@ interface Project {
   description: string;
   image: string;
   videoUrl?: string;
+  demoUrl?: string;
   services: string[];
 }
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+  const navigate = useNavigate();
 
   const projects: Project[] = [
     {
       id: 1,
-      title: "Luxury E-commerce Platform",
+      title: "Celite.in E-commerce Website",
       category: "web",
-      description: "Complete redesign and development of a premium e-commerce platform with custom features and seamless checkout experience",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      services: ["E-commerce", "Custom Design", "Payment Integration"],
+      description: "A modern, fully-functional e-commerce platform featuring seamless checkout experience, secure payment processing, comprehensive product management, and responsive design optimized for all devices",
+      image: "/celite.in.png",
+      demoUrl: "https://celite.in",
+      services: ["E-commerce", "Payment Integration", "Product Management"],
     },
     {
       id: 2,
-      title: "Cinematic Wedding Highlight",
-      category: "video",
-      description: "A breathtaking wedding highlight reel with cinematic color grading and emotional storytelling",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      services: ["Wedding Editing", "Color Grading", "VFX"],
+      title: "Static Portfolio Website",
+      category: "web",
+      description: "A lightning-fast, secure static portfolio website built for maximum performance and elegance. Perfect for freelancers and professionals who need a minimal, high-speed online presence with exceptional SEO optimization",
+      image: "/static-portfolio.webp",
+      demoUrl: "http://chaplinsiva.netlify.app",
+      services: ["Static Website", "Performance", "SEO Optimization"],
     },
     {
       id: 3,
-      title: "Creative Agency Portfolio",
+      title: "Dynamic Portfolio Website",
       category: "web",
-      description: "Modern portfolio website for a design agency featuring smooth animations and interactive galleries",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
-      services: ["Portfolio", "Animations", "Responsive Design"],
+      description: "An interactive, content-managed portfolio website with advanced features including dynamic content updates, complex user interactions, and scalable architecture for growing businesses and creative professionals",
+      image: "/dynamic-portfolio.webp",
+      demoUrl: "http://sreram.netlify.app",
+      services: ["Dynamic Website", "CMS Integration", "Interactive Features"],
     },
     {
       id: 4,
-      title: "Brand Logo Animation",
+      title: "Cinematic Wedding Highlight",
       category: "video",
-      description: "Dynamic logo animation with motion graphics and sound design for a tech startup",
-      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      services: ["Logo Animation", "Motion Graphics", "Sound Design"],
+      description: "A breathtaking wedding highlight reel with cinematic color grading and emotional storytelling",
+      image: "/wedding.png",
+      videoUrl: "https://www.youtube.com/embed/_7FS49HiAkk",
+      services: ["Wedding Editing", "Color Grading", "VFX"],
     },
-    {
-      id: 5,
-      title: "Restaurant Management System",
-      category: "web",
-      description: "Full-stack restaurant management platform with billing, inventory, and table booking features",
-      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
-      services: ["Management System", "Full Stack", "Database"],
-    },
+    
     {
       id: 6,
-      title: "Instagram Reels Package",
+      title: "AI Video Editing",
       category: "video",
-      description: "Series of viral-optimized Instagram reels with trending transitions and effects",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      services: ["Social Media", "Reels Editing", "Trending Effects"],
+      description: "Advanced AI-powered editing with automated color grading, smart object tracking, scene detection, and next‑generation video enhancement for crystal‑clear results",
+      image: "/ai%20video.png",
+      videoUrl: "https://www.youtube.com/embed/cmqynXLIqDI",
+      services: ["AI Video Editing", "Color Grading", "Object Tracking"],
+    },
+    {
+      id: 7,
+      title: "Premium Photo Slideshow",
+      category: "video",
+      description: "High‑quality, professional photo compilation with cinematic transitions, custom music, and personalized effects for an elegant storytelling experience",
+      image: "/photo%20slideshow.png",
+      videoUrl: "https://www.youtube.com/embed/QpA60HpzLcE",
+      services: ["Photo Slideshow", "Cinematic Transitions", "Custom Music"],
+    },
+    {
+      id: 8,
+      title: "Custom Birthday Photo Video",
+      category: "video",
+      description: "Memorable, personalized birthday videos crafted from your photos with celebratory music, animated titles, and heart‑warming transitions",
+      image: "/birthday.png",
+      videoUrl: "https://www.youtube.com/embed/AwZitQe1kWc",
+      services: ["Birthday Video", "Personalized Titles", "Music Sync"],
+    },
+    {
+      id: 9,
+      title: "YouTube Intro Package",
+      category: "video",
+      description: "Custom YouTube intro animations with brand integration and professional sound design",
+      image: "/intro.png",
+      videoUrl: "https://www.youtube.com/embed/MA5tSTL7Kns",
+      services: ["YouTube Intros", "Brand Animation", "Sound Design"],
     },
   ];
 
@@ -139,17 +164,32 @@ const Portfolio = () => {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  {project.videoUrl && (
-                    <div className="absolute inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button
-                        size="lg"
-                        className="bg-gradient-primary text-primary-foreground font-semibold hover:shadow-glow"
-                      >
-                        <Play className="mr-2 h-5 w-5" />
-                        Watch Demo
-                      </Button>
-                    </div>
-                  )}
+                  {/* Universal CTA Button Overlay */}
+                  <div className="absolute inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Button
+                      size="lg"
+                      onClick={() => {
+                        if (project.category === "video" && project.videoUrl) {
+                          navigate("/demo", { state: { title: project.title, url: project.videoUrl } });
+                        } else if (project.demoUrl) {
+                          window.open(project.demoUrl, '_blank', 'noopener,noreferrer');
+                        }
+                      }}
+                      className="bg-gradient-primary text-primary-foreground font-semibold hover:shadow-glow"
+                    >
+                      {project.category === "video" ? (
+                        <>
+                          <Play className="mr-2 h-5 w-5" />
+                          Watch Demo
+                        </>
+                      ) : (
+                        <>
+                          <ExternalLink className="mr-2 h-5 w-5" />
+                          View Project
+                        </>
+                      )}
+                    </Button>
+                  </div>
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-primary/90 text-primary-foreground font-semibold">
                       {project.category === "web" ? "Web" : "Video"}

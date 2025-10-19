@@ -14,19 +14,8 @@ import {
 } from "lucide-react";
 
 const Services = () => {
-  const scrollToContact = (subject: string) => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      // Pre-fill the subject field
-      setTimeout(() => {
-        const subjectInput = document.querySelector('input[name="subject"]') as HTMLInputElement;
-        if (subjectInput) {
-          subjectInput.value = subject;
-          subjectInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-      }, 500);
-    }
+  const openEnquiryForm = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSffXgi7hLLNPB1lmrhiGBktEn-gLtbpbHbpKe2-rVbNsu3d2w/viewform?usp=dialog', '_blank', 'noopener,noreferrer');
   };
 
   const webServices = [
@@ -86,7 +75,7 @@ const Services = () => {
             </div>
 
             <Button
-              onClick={() => scrollToContact("Web Development Inquiry")}
+              onClick={openEnquiryForm}
               className="w-full bg-gradient-primary text-primary-foreground font-medium hover:shadow-glow transition-all duration-300 py-4 text-lg"
             >
               Enquire Now
@@ -120,7 +109,7 @@ const Services = () => {
             </div>
 
             <Button
-              onClick={() => scrollToContact("Video Editing Inquiry")}
+              onClick={openEnquiryForm}
               variant="secondary"
               className="w-full bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary hover:text-secondary-foreground font-medium transition-all duration-300 py-4 text-lg"
             >
