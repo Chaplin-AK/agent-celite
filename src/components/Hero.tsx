@@ -10,6 +10,10 @@ const Hero = () => {
     }
   };
 
+  const openEnquiryForm = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSffXgi7hLLNPB1lmrhiGBktEn-gLtbpbHbpKe2-rVbNsu3d2w/viewform?usp=dialog', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section
       id="hero"
@@ -56,11 +60,11 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection("portfolio")}
+              onClick={openEnquiryForm}
               className="border-2 border-primary text-primary font-semibold text-lg px-8 py-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
             >
-              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              View Portfolio
+              <ArrowRight className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              Get Started
             </Button>
           </div>
         </div>

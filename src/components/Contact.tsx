@@ -1,12 +1,16 @@
-import { Phone, Mail, MessageCircle, Instagram, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MessageCircle, Instagram, Linkedin, Youtube, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
+  const openEnquiryForm = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSffXgi7hLLNPB1lmrhiGBktEn-gLtbpbHbpKe2-rVbNsu3d2w/viewform?usp=dialog', '_blank', 'noopener,noreferrer');
+  };
 
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
       label: "Phone",
-      value: "+91 76394 26929",
+      value: "+91 76394 26929\n+91 63744 01608",
       href: "tel:+917639426929",
     },
     {
@@ -24,11 +28,10 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <Instagram className="w-6 h-6" />, href: "#", label: "Instagram" },
-    { icon: <Facebook className="w-6 h-6" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="w-6 h-6" />, href: "#", label: "Twitter" },
-    { icon: <Linkedin className="w-6 h-6" />, href: "#", label: "LinkedIn" },
-    { icon: <Youtube className="w-6 h-6" />, href: "#", label: "YouTube" },
+    { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/chaplinelite/", label: "Instagram" },
+    { icon: <Youtube className="w-6 h-6" />, href: "http://www.youtube.com/@CELITETEMPLATES", label: "YouTube" },
+    { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/company/celite/", label: "LinkedIn" },
+    { icon: <Send className="w-6 h-6" />, href: "https://t.me/chaplinelite", label: "Telegram" },
   ];
 
   return (
@@ -46,7 +49,7 @@ const Contact = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Information */}
+          {/* Contact Information */}
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-elegant">
               <h3 className="text-2xl font-heading font-bold text-foreground mb-6">
                 Contact Information
@@ -63,7 +66,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="text-lg font-semibold text-foreground">{info.value}</p>
+                      <p className="text-lg font-semibold text-foreground whitespace-pre-line">{info.value}</p>
                     </div>
                   </a>
                 ))}
@@ -80,6 +83,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="p-4 rounded-lg bg-background/50 border border-border/50 hover:border-primary hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                   >
@@ -88,6 +93,17 @@ const Contact = () => {
                 ))}
               </div>
             </div>
+          </div>
+          
+          {/* Let's Talk Button */}
+          <div className="flex justify-center mt-12">
+            <Button
+              onClick={openEnquiryForm}
+              size="lg"
+              className="bg-gradient-primary text-primary-foreground font-semibold text-xl px-10 py-5 md:px-14 md:py-7 w-[220px] md:w-[260px] hover:shadow-glow transition-all duration-300"
+            >
+              Let's Talk
+            </Button>
           </div>
         </div>
       </div>

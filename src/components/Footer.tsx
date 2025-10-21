@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Send } from "lucide-react";
 
 const Footer = () => {
   const scrollToSection = (sectionId: string) => {
@@ -16,11 +16,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Instagram className="w-5 h-5" />, href: "#", label: "Instagram" },
-    { icon: <Facebook className="w-5 h-5" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-    { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Youtube className="w-5 h-5" />, href: "#", label: "YouTube" },
+    { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/chaplinelite/", label: "Instagram" },
+    { icon: <Youtube className="w-5 h-5" />, href: "http://www.youtube.com/@CELITETEMPLATES", label: "YouTube" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/company/celite/", label: "LinkedIn" },
+    { icon: <Send className="w-5 h-5" />, href: "https://t.me/chaplinelite", label: "Telegram" },
   ];
 
   return (
@@ -64,6 +63,8 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="p-2 rounded-lg bg-card border border-border hover:border-primary hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300"
                 >
