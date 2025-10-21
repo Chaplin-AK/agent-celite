@@ -110,8 +110,7 @@ const Services = () => {
 
             <Button
               onClick={openEnquiryForm}
-              variant="secondary"
-              className="w-full bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary hover:text-secondary-foreground font-medium transition-all duration-300 py-4 text-lg"
+              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium hover:shadow-glow transition-all duration-300 py-4 text-lg hover:from-purple-600 hover:to-blue-600"
             >
               Enquire Now
             </Button>
